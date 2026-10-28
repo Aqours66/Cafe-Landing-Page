@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#E9ECE5">
+<title>Kopi Corner — Coffee that wakes up your day</title>
+<meta name="description" content="Kopi Corner is a neighbourhood kopitiam-style café serving fresh roasted coffee and pastries. Demo landing page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- shared SVG definitions: Peranakan-style tile + clock symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="tile" width="24" height="24" patternUnits="userSpaceOnUse" viewBox="0 0 48 48">
+      <rect width="48" height="48" fill="#FBF3E2"/>
+      <g fill="#17776B"><circle r="13"/><circle cx="48" r="13"/><circle cy="48" r="13"/><circle cx="48" cy="48" r="13"/></g>
+      <g fill="#EDA6A0"><ellipse cx="24" cy="12.5" rx="5" ry="8.5"/><ellipse cx="24" cy="35.5" rx="5" ry="8.5"/><ellipse cx="12.5" cy="24" rx="8.5" ry="5"/><ellipse cx="35.5" cy="24" rx="8.5" ry="5"/></g>
+      <path d="M12 12l5 5M36 12l-5 5M12 36l5-5M36 36l-5-5" stroke="#0E4A43" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <circle cx="24" cy="24" r="5.5" fill="#E6A92A"/>
+      <circle cx="24" cy="24" r="2.3" fill="#C8281E"/>
+    </pattern>
+    <symbol id="ic-clock" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 4.5V8l2.6 1.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- marble veins -->
+<svg class="veins" aria-hidden="true" focusable="false">
+  <filter id="vein" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".0035 .008" numOctaves="4" seed="11" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .38  0 0 0 0 .45  0 0 0 0 .42  1 0 0 0 0" result="c"/>
+    <feComponentTransfer in="c"><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 .55 0 0 0 .3 0 0 0 0 0 0"/></feComponentTransfer>
+    <feGaussianBlur stdDeviation=".5"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#vein)"/>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top">
+  <a class="logo" href="#top" aria-label="Kopi Corner, back to top">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="19" cy="21" r="14" fill="#fff" stroke="#2b1710" stroke-width="2.5"/><circle cx="19" cy="21" r="9" fill="#4a2616"/><path d="M33 16h3a4 4 0 0 1 0 9h-3" fill="none" stroke="#2b1710" stroke-width="2.5"/></svg>
+    Kopi Corner
+  </a>
+  <nav id="links" aria-label="Main">
+    <a href="#about">House rules</a><a href="#order">Order</a><a href="#menu">Menu</a><a href="#visit">Visit</a><a href="#faq">FAQ</a>
+    <a class="cta" href="#contact">Reserve</a>
+  </nav>
+  <div class="clock" id="clock" title="The page follows a day at the café as you scroll" role="img" aria-label="Time of day in the café, changes as you scroll">
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <g id="sunIcon"><circle id="sunDot" cx="10" cy="10" r="4.6" fill="#f08a3c"/><g id="sunRays" stroke="#f08a3c" stroke-width="1.6" stroke-linecap="round"><path d="M10 1.5v2.2M10 16.3v2.2M1.5 10h2.2M16.3 10h2.2M4 4l1.6 1.6M14.4 14.4L16 16M16 4l-1.6 1.6M5.6 14.4L4 16"/></g></g>
+      <path id="moonIcon" d="M14.5 13.6A6.4 6.4 0 0 1 7.2 4.6a6.4 6.4 0 1 0 7.3 9z" fill="#dce3f2" hidden/>
+    </svg>
+    <span id="clockTime">7:30 am</span>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="plate">
+        <p class="plate-top">Kopi Corner <span lang="zh">咖啡角</span></p>
+        <h1>Coffee that wakes up your day.</h1>
+        <span class="sticker">Fresh roasted daily</span>
+      </div>
+      <p class="lede">Small-batch beans, warm pastries and a corner seat with your name on it.</p>
+      <div class="btns">
+        <a class="btn primary" href="#order">Build your order</a>
+        <a class="btn" href="#contact">Book a table</a>
+      </div>
+    </div>
+
+    <div class="scene">
+      <svg viewBox="0 0 400 400" role="img" aria-label="A cup of kopi on a marble café table, seen from above">
+        <defs>
+          <clipPath id="tclip"><circle cx="200" cy="200" r="182"/></clipPath>
+          <radialGradient id="crema" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#7a4527"/><stop offset=".6" stop-color="#4a2616"/><stop offset="1" stop-color="#2a1409"/></radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="194" fill="#5a3a24"/>
+        <circle cx="200" cy="200" r="182" fill="#eef0ea"/>
+        <g clip-path="url(#tclip)" fill="none" stroke="#8fa09a" stroke-linecap="round">
+          <path d="M10 120C90 160 130 80 210 128S330 176 392 112" stroke-width="1.8" opacity=".55"/>
+          <path d="M30 300C100 250 150 330 230 290S350 250 392 300" stroke-width="1.4" opacity=".45"/>
+          <path d="M120 10C140 70 100 120 150 190" stroke-width="1.2" opacity=".4"/>
+          <path d="M300 392C290 330 330 300 310 240" stroke-width="1.6" opacity=".4"/>
+        </g>
+        <!-- sugar sachet -->
+        <g transform="rotate(-18 96 320)"><rect x="70" y="302" width="58" height="34" rx="3" fill="#fff" stroke="#d9d3c5" stroke-width="2"/><rect x="70" y="313" width="58" height="12" fill="#c8281e"/></g>
+        <!-- beans -->
+        <g fill="#6b3e26" stroke="#2b1710" stroke-width="2"><ellipse cx="316" cy="84" rx="11" ry="16" transform="rotate(38 316 84)"/><ellipse cx="344" cy="112" rx="10" ry="14" transform="rotate(70 344 112)"/></g>
+        <g stroke="#eef0ea" stroke-width="2" stroke-linecap="round"><path d="M311 76l10 16" /><path d="M337 112l14 2"/></g>
+        <!-- saucer -->
+        <circle cx="196" cy="214" r="112" fill="#fff" stroke="#d9d3c5" stroke-width="3"/>
+        <circle cx="196" cy="214" r="84" fill="none" stroke="#e8e2d4" stroke-width="3"/>
+        <!-- spoon -->
+        <g transform="rotate(-24 250 300)"><rect x="232" y="296" width="76" height="7" rx="3.5" fill="#b7bfbe"/><ellipse cx="228" cy="299.5" rx="16" ry="10" fill="#c8cfce"/></g>
+        <!-- handle + cup -->
+        <path d="M262 188h26a20 20 0 0 1 0 40h-24" fill="none" stroke="#cfc8b8" stroke-width="17"/>
+        <path d="M262 188h26a20 20 0 0 1 0 40h-24" fill="none" stroke="#fff" stroke-width="11"/>
+        <circle cx="190" cy="204" r="76" fill="#fff" stroke="#cfc8b8" stroke-width="4"/>
+        <circle cx="190" cy="204" r="64" fill="url(#crema)"/>
+        <circle class="rip" cx="190" cy="204" r="20" fill="none" stroke="#f1d5b0" stroke-width="2"/>
+        <circle class="rip r2" cx="190" cy="204" r="20" fill="none" stroke="#f1d5b0" stroke-width="2"/>
+        <path d="M146 188A46 46 0 0 1 178 160" stroke="#fff" stroke-opacity=".35" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+
+      <div class="door open" id="door">
+        <div class="door-in" role="status" aria-live="polite">
+          <b id="doorWord">Open</b>
+          <small id="doorSub">Come on in</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div>
+      <span>Espresso ✦ Latte ✦ Croissant ✦ Cold Brew ✦ Cinnamon Roll ✦ Iced Kopi ✦ Banana Loaf ✦ </span><span>Espresso ✦ Latte ✦ Croissant ✦ Cold Brew ✦ Cinnamon Roll ✦ Iced Kopi ✦ Banana Loaf ✦ </span>
+    </div>
+  </div>
+
+  <!-- ABOUT: house rules notice -->
+  <section id="about" class="sec">
+    <div class="notice">
+      <svg class="band" height="24" aria-hidden="true"><rect width="100%" height="24" fill="url(#tile)"/></svg>
+      <div class="notice-in">
+        <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>7:30 am</span>
+        <h2>Why you'll like it here</h2>
+        <p class="sub">A small café with one simple idea: every cup and every visit should feel good.</p>
+        <ol class="rules">
+          <li><span class="n">1</span><div><h3>Fresh roasted</h3><p>Beans roasted in small batches and ground to order.</p></div></li>
+          <li><span class="n">2</span><div><h3>Baked daily</h3><p>Croissants, cakes and bread, out of the oven each morning.</p></div></li>
+          <li><span class="n">3</span><div><h3>Made to stay</h3><p>Comfy seats, free Wi-Fi and plenty of power sockets.</p></div></li>
+        </ol>
+      </div>
+      <svg class="band" height="24" aria-hidden="true"><rect width="100%" height="24" fill="url(#tile)"/></svg>
+    </div>
+  </section>
+
+  <!-- ORDER: kopi lingo builder -->
+  <section id="order" class="sec">
+    <div class="wrap">
+      <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>9:00 am</span>
+      <h2>Order like a local</h2>
+      <p class="sub">Build your cup and we'll write it the way the counter says it. Say it out loud, or just show the chit.</p>
+      <div class="builder">
+        <form class="ctrl" id="builder" aria-label="Build your drink" onsubmit="return false">
+          <div class="ctrl-head"><h3>Your cup</h3><button class="btn" type="button" id="surprise">Surprise me</button></div>
+          <div id="groups"></div>
+        </form>
+
+        <div class="out">
+          <svg class="cupsvg iced" id="cup" viewBox="0 0 260 260" role="img" aria-label="Your drink, seen from above">
+            <circle cx="130" cy="130" r="126" fill="#5a3a24"/>
+            <circle cx="130" cy="130" r="117" fill="#eef0ea"/>
+            <path d="M30 110C80 135 100 80 150 112S220 130 244 96" fill="none" stroke="#8fa09a" stroke-width="1.4" opacity=".5"/>
+            <path d="M24 190C70 170 110 215 160 192S220 170 240 196" fill="none" stroke="#8fa09a" stroke-width="1.2" opacity=".4"/>
+            <g class="hot-only">
+              <circle cx="125" cy="138" r="86" fill="#fff" stroke="#d9d3c5" stroke-width="2.5"/>
+              <circle cx="125" cy="138" r="64" fill="none" stroke="#e8e2d4" stroke-width="2.5"/>
+              <g transform="rotate(-24 170 200)"><rect x="160" y="196" width="50" height="5" rx="2.5" fill="#b7bfbe"/><ellipse cx="157" cy="198.5" rx="11" ry="7" fill="#c8cfce"/></g>
+              <path d="M178 117h18a14 14 0 0 1 0 28h-16" fill="none" stroke="#cfc8b8" stroke-width="13"/>
+              <path d="M178 117h18a14 14 0 0 1 0 28h-16" fill="none" stroke="#fff" stroke-width="8"/>
+            </g>
+            <g class="iced-only">
+              <circle cx="125" cy="130" r="82" fill="#eda6a0"/>
+              <circle cx="125" cy="130" r="82" fill="none" stroke="#fbf3e2" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round"/>
+            </g>
+            <circle cx="125" cy="130" r="58" fill="#fff" stroke="#cfc8b8" stroke-width="3.5"/>
+            <circle id="liquid" cx="125" cy="130" r="48" fill="#4a2616"/>
+            <path d="M92 118A36 36 0 0 1 116 97" stroke="#fff" stroke-opacity=".4" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <g class="iced-only">
+              <g fill="#fff" fill-opacity=".5" stroke="#fff" stroke-opacity=".85" stroke-width="1.5">
+                <rect x="100" y="113" width="22" height="22" rx="4" transform="rotate(-14 111 124)"/>
+                <rect x="124" y="130" width="21" height="21" rx="4" transform="rotate(12 134 140)"/>
+                <rect x="108" y="140" width="18" height="18" rx="4" transform="rotate(26 117 149)"/>
+              </g>
+              <path d="M126 128L172 66" stroke="#c8281e" stroke-width="7" stroke-linecap="round"/>
+              <path d="M150 97l8-10" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="4 8"/>
+            </g>
+          </svg>
+
+          <div class="chit-wrap">
+            <article class="chit paper zig" aria-live="polite">
+              <header><b>Kopi Corner</b><span id="orderNo">Order no. 27</span></header>
+              <p class="lingo" id="lingo">KOPI C SIEW DAI PENG</p>
+              <p class="plain" id="plain"></p>
+              <p class="total"><span>Total</span><em id="price">RM 9.00</em></p>
+              <div class="acts">
+                <button class="btn primary" type="button" id="copy">Copy order</button>
+                <button class="btn" type="button" id="addBooking">Add to my table request</button>
+              </div>
+              <p class="note" id="note" role="status"></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAFF FAVOURITES: ticket rail -->
+  <section id="picks" class="sec picks">
+    <div class="wrap">
+      <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>11:00 am</span>
+      <h2>Staff favourites</h2>
+      <p class="sub">Can't decide? Start with one of these.</p>
+      <div class="rail">
+        <div class="tk"><i class="clip"></i>
+          <article class="ticket paper zig"><div class="ico" data-i="glass" data-c="#8B5A3C"></div><p class="qty">1 ×</p><h3>Iced Kopi</h3><p>Our local-style coffee, strong and sweet, poured over ice.</p><p class="pr">RM 9</p></article>
+        </div>
+        <div class="tk"><i class="clip"></i>
+          <article class="ticket paper zig"><div class="ico" data-i="croissant"></div><p class="qty">1 ×</p><h3>Butter croissant</h3><p>Flaky, golden and still warm from the oven.</p><p class="pr">RM 8</p></article>
+        </div>
+        <div class="tk"><i class="clip"></i>
+          <article class="ticket paper zig"><div class="ico" data-i="glass" data-c="#4A2A1C"></div><p class="qty">1 ×</p><h3>Iced chocolate</h3><p>Dark chocolate, cold milk, not too sweet.</p><p class="pr">RM 12</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU BOARD -->
+  <section id="menu" class="sec">
+    <div class="wrap">
+      <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>12:30 pm</span>
+      <h2>Today's menu</h2>
+      <p class="sub">Written on the board every morning.</p>
+      <div class="board-frame">
+        <svg class="band" height="24" aria-hidden="true"><rect width="100%" height="24" fill="url(#tile)"/></svg>
+        <div class="board" id="board"></div>
+        <svg class="band" height="24" aria-hidden="true"><rect width="100%" height="24" fill="url(#tile)"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="sec">
+    <div class="wrap">
+      <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>3:00 pm</span>
+      <h2>What our customers say</h2>
+      <p class="sub">Sample testimonials for this demo.</p>
+      <div class="carousel">
+        <div class="track" id="track" tabindex="0" aria-label="Customer testimonials">
+          <blockquote class="quote paper"><div class="stars" aria-label="5 stars">★★★★★</div><p>The iced kopi is the best I've had in the city. I come every Saturday.</p><div class="who"><span class="av">A</span><cite>Aisyah<small>Saturday regular</small></cite></div></blockquote>
+          <blockquote class="quote paper"><div class="stars" aria-label="5 stars">★★★★★</div><p>Great place to work for a few hours. Good Wi-Fi and the croissants are unreal.</p><div class="who"><span class="av">D</span><cite>Daniel<small>Works from here</small></cite></div></blockquote>
+          <blockquote class="quote paper"><div class="stars" aria-label="5 stars">★★★★★</div><p>Friendly staff and a warm, cosy space. Perfect for catching up with friends.</p><div class="who"><span class="av">M</span><cite>Mei Ling<small>Brings her friends</small></cite></div></blockquote>
+          <blockquote class="quote paper"><div class="stars" aria-label="5 stars">★★★★★</div><p>Fast service and a proper flat white before work. Never disappoints.</p><div class="who"><span class="av">H</span><cite>Hafiz<small>Morning commuter</small></cite></div></blockquote>
+          <blockquote class="quote paper"><div class="stars" aria-label="5 stars">★★★★★</div><p>The cinnamon roll alone is worth the trip. Lovely, relaxed atmosphere.</p><div class="who"><span class="av">P</span><cite>Priya<small>Weekend brunch fan</small></cite></div></blockquote>
+          <blockquote class="quote paper"><div class="stars" aria-label="5 stars">★★★★★</div><p>Plenty of sockets, quiet corner, and the cold brew keeps me going.</p><div class="who"><span class="av">W</span><cite>Wei Jie<small>Studies here</small></cite></div></blockquote>
+        </div>
+        <div class="ctrl-row">
+          <button class="arrow" id="prev" type="button" aria-label="Previous testimonial">&#8249;</button>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+          <button class="arrow" id="next" type="button" aria-label="Next testimonial">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" class="sec">
+    <div class="wrap">
+      <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>6:00 pm</span>
+      <h2>Come say hi</h2>
+      <p class="sub">We're on the corner. Look for the red sign.</p>
+      <div class="visit">
+        <div class="card">
+          <h3>Opening hours</h3>
+          <dl class="hours" id="hours">
+            <div data-d="1,2,3,4,5"><dt>Mon – Fri</dt><dd>7:30 am – 6:00 pm</dd></div>
+            <div data-d="6"><dt>Saturday</dt><dd>8:00 am – 8:00 pm</dd></div>
+            <div data-d="0"><dt>Sunday</dt><dd>8:00 am – 4:00 pm</dd></div>
+          </dl>
+          <div class="addr">
+            <p>12 Jalan Contoh<br>Johor Bahru, Malaysia</p>
+            <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+          </div>
+        </div>
+        <div class="card mapcard">
+          <svg viewBox="0 0 520 340" role="img" aria-label="Simple map: Kopi Corner sits on the corner of Jalan Contoh and Lorong Kopi">
+            <rect width="520" height="340" fill="#dfe7d9"/>
+            <g fill="#f1eee3"><rect x="14" y="14" width="250" height="118" rx="6"/><rect x="14" y="196" width="130" height="130" rx="6"/><rect x="176" y="196" width="88" height="130" rx="6"/><rect x="336" y="196" width="170" height="130" rx="6"/><rect x="440" y="14" width="66" height="118" rx="6"/></g>
+            <g fill="#bfdcb6"><rect x="300" y="14" width="0" height="0"/><circle cx="470" cy="260" r="0"/></g>
+            <g fill="#a9d29d"><rect x="350" y="214" width="140" height="94" rx="10"/></g>
+            <g fill="#6fae63"><circle cx="372" cy="238" r="11"/><circle cx="404" cy="266" r="12"/><circle cx="446" cy="240" r="11"/><circle cx="470" cy="284" r="10"/><circle cx="380" cy="290" r="9"/></g>
+            <g stroke="#fff" stroke-width="34" stroke-linecap="butt"><path d="M0 164H520"/><path d="M300 0V340"/></g>
+            <g stroke="#cbc5b3" stroke-width="2" stroke-dasharray="10 9" fill="none"><path d="M0 164H520"/><path d="M300 0V340"/></g>
+            <text x="30" y="169" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="13" font-weight="600" fill="#7a7468">Jalan Contoh</text>
+            <text transform="translate(305 300) rotate(-90)" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="13" font-weight="600" fill="#7a7468">Lorong Kopi</text>
+            <!-- the shop, on the corner -->
+            <rect x="318" y="62" width="120" height="82" rx="4" fill="#c8281e" stroke="#2b1710" stroke-width="3"/>
+            <g fill="#fff"><rect x="318" y="118" width="15" height="26"/><rect x="348" y="118" width="15" height="26"/><rect x="378" y="118" width="15" height="26"/><rect x="408" y="118" width="15" height="26"/></g>
+            <text x="378" y="98" text-anchor="middle" font-family="Alfa Slab One, Georgia, serif" font-size="15" fill="#fff4e6">Kopi Corner</text>
+            <path d="M378 52c-9 0-15-6-15-14a15 15 0 0 1 30 0c0 8-6 14-15 14z" fill="#e6a92a" stroke="#2b1710" stroke-width="2.5" transform="translate(0 -6)"/>
+            <circle cx="378" cy="32" r="5" fill="#2b1710"/>
+            <g transform="translate(28 296)"><circle r="16" fill="#fff" stroke="#2b1710" stroke-width="2"/><path d="M0 -10L5 4H-5Z" fill="#c8281e"/><text y="-20" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="10" font-weight="700" fill="#2b1710">N</text></g>
+          </svg>
+          <a class="foot-link" href="https://www.google.com/maps/search/?api=1&query=12+Jalan+Contoh+Johor+Bahru" target="_blank" rel="noopener"><span>Get directions</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="sec">
+    <div class="wrap faqgrid">
+      <div>
+        <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>7:00 pm</span>
+        <h2>Good to know</h2>
+        <p class="sub">The questions we hear most at the counter.</p>
+      </div>
+      <div class="faq">
+        <details><summary>Do you have free Wi-Fi?</summary><p>Yes, free for everyone. Ask at the counter for the password.</p></details>
+        <details><summary>Can I bring my laptop?</summary><p>Of course. We have power sockets at most tables, and the quiet corner is great for work.</p></details>
+        <details><summary>Do you have dairy-free milk?</summary><p>Yes, oat and soy milk for a small extra charge.</p></details>
+        <details><summary>Do I need to reserve a table?</summary><p>Not usually, but it helps for groups of five or more and busy weekends.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE: order pad -->
+  <section id="contact" class="sec">
+    <div class="wrap resgrid">
+      <div>
+        <span class="stamp"><svg aria-hidden="true"><use href="#ic-clock"/></svg>8:00 pm</span>
+        <h2>Save me a seat</h2>
+        <p class="sub">Tell us when you're coming and we'll keep a table warm.</p>
+      </div>
+      <form id="form" class="pad paper" novalidate>
+        <div class="fields">
+          <label>Name<input name="name" type="text" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+          <label>Date<input name="date" type="date" required></label>
+          <label>Guests<select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+          <label class="full">First order (optional)<input name="order" type="text" placeholder="Build one in the order section"></label>
+        </div>
+        <button class="btn primary" type="submit">Send request</button>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <svg class="band" height="48" aria-hidden="true"><rect width="100%" height="48" fill="url(#tile)"/></svg>
+  <p class="mark" aria-hidden="true">Kopi Corner</p>
+  <div class="foot-row">
+    <p>&copy; <span id="year">2026</span> Kopi Corner. Demo project for portfolio use.</p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- Quick contact buttons. Replace the phone number and address with real ones. -->
+<div class="quick" id="quick" aria-label="Quick contact">
+  <a href="https://www.google.com/maps/search/?api=1&query=12+Jalan+Contoh+Johor+Bahru" target="_blank" rel="noopener" data-label="Directions" aria-label="Get directions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></a>
+  <a href="tel:+60123456789" data-label="Call us" aria-label="Call us"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+  <a class="q-chat" href="https://wa.me/60123456789?text=Hi%20Kopi%20Corner%2C%20I%27d%20like%20to%20ask%20about%20a%20table." target="_blank" rel="noopener" data-label="WhatsApp" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.3L3 20l1.3-4.9A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
